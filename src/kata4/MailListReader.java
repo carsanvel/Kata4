@@ -15,9 +15,9 @@ public class MailListReader {
         List<Mail> list = new ArrayList();
         
         try {
-            Scanner scanner = new Scanner(new BufferedReader(new FileReader(new File(fileName))));
-            while(scanner.hasNext()) {
-                String line = scanner.nextLine();
+            BufferedReader reader = new BufferedReader((new FileReader(new File(fileName))));
+            IteratorReader iterator = new IteratorReader(reader);
+            for (String line : iterator) {
                 if(Mail.isMail(line)) {
                     list.add(new Mail(line));
                 }
